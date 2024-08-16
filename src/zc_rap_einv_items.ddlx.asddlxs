@@ -1,0 +1,99 @@
+@Metadata.layer: #CORE
+@UI:{
+    headerInfo: { typeName: 'EInvoices Items',
+                  typeNamePlural: 'EInvoices Items',
+                  title: { type: #STANDARD, label: 'Items', value: 'Buzei' },
+                  description: { value: 'Buzei'}
+    },
+    presentationVariant: [{ sortOrder: [{ by: 'Buzei', direction: #ASC }] }]
+}
+annotate view ZC_RAP_EINV_ITEMS
+    with 
+{
+      @UI.facet          : [{id : 'Items',
+               purpose: #STANDARD,
+               position: 10,
+               label : 'Items',
+               type  : #IDENTIFICATION_REFERENCE
+               }
+               ]
+  @UI.hidden: true
+  Companycode;
+  @UI.hidden: true
+  Accountingdocument;
+  @UI.hidden: true
+  Fiscalyear;
+  
+  @UI.lineItem       : [{ position: 10 }]
+  @UI.identification : [{ position: 10 }]
+  Buzei;
+  
+  @UI.lineItem       : [{ position: 20 }]
+  @UI.identification : [{ position: 20 }]
+  Material;
+  
+  @UI.lineItem       : [{ position: 30 }]
+  @UI.identification : [{ position: 30 }]
+  Itemname;
+  
+  @UI.lineItem       : [{ position: 40 }]
+  @UI.identification : [{ position: 40 }]
+  Noted;
+  
+  @UI.lineItem       : [{ position: 50 }]
+  @UI.identification : [{ position: 50 }]
+  Taxcode;
+  
+  @UI.lineItem       : [{ position: 60 }]
+  @UI.identification : [{ position: 60 }]
+  Taxpercentage;
+  
+  @UI.lineItem       : [{ position: 70 }]
+  @UI.identification : [{ position: 70 }]
+  Quantity;
+  
+  @UI.lineItem       : [{ position: 80 }]
+  @UI.identification : [{ position: 80 }]
+  Baseunit;
+  
+  @UI.lineItem       : [{ position: 90 }]
+  @UI.identification : [{ position: 90 }]
+  Unittext;
+  
+  @UI.lineItem       : [{ position: 100 }]
+  @UI.identification : [{ position: 100 }]
+  Price;
+  
+  @UI.lineItem       : [{ position: 110 }]
+  @UI.identification : [{ position: 110 }]
+  Currency;
+  
+  @UI.lineItem       : [{ position: 120 }]
+  @UI.identification : [{ position: 120 }]
+  Amount;
+  
+  @UI.lineItem       : [{ position: 130 }]
+  @UI.identification : [{ position: 130 }]
+  Vat;
+  
+  @UI.lineItem       : [{ position: 140 }]
+  @UI.identification : [{ position: 140 }]
+  Total;
+  
+  @UI.lineItem       : [{ position: 150 }]
+  @UI.identification : [{ position: 150 }]
+  Pricev;
+  
+  @UI.lineItem       : [{ position: 160 }]
+  @UI.identification : [{ position: 160 }]
+  Amountv;
+  
+  @UI.lineItem       : [{ position: 170 }]
+  @UI.identification : [{ position: 170 }]
+  Vatv;
+  
+  @UI.lineItem       : [{ position: 180 }]
+  @UI.identification : [{ position: 180 }]
+  Totalv;
+    
+}

@@ -1,0 +1,33 @@
+managed implementation in class zbp_i_rap_einv_paym unique;
+strict ( 2 );
+
+with draft;
+define behavior for ZI_RAP_EINV_PAYM alias EINVpaym
+persistent table zrap_einv_paym
+draft table zrap_einv_paym_d
+lock master total etag Lastchangedat
+authorization master ( instance )
+etag master Lastchangedat
+{
+  create;
+  update;
+  delete;
+  field ( mandatory : create ) Zlsch;
+  field ( readonly : update ) Zlsch, Paymtext;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+
+  draft determine action Prepare;
+
+  mapping for zrap_einv_paym
+    {
+      Zlsch              = zlsch;
+      Paymtext           = paymtext;
+      Locallastchangedat = locallastchangedat;
+      Locallastchangedby = locallastchangedby;
+      Lastchangedat      = lastchangedat;
+    }
+}

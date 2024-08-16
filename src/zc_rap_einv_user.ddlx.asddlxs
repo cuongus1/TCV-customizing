@@ -1,0 +1,52 @@
+@Metadata.layer: #CORE
+@UI:{
+    headerInfo: { typeName: 'EInvoice Username',
+                  typeNamePlural: 'EInvoice Username',
+                  title: { type: #STANDARD, label: 'User Type', value: 'Usertype' },
+                  description: { value: 'Usertype'}
+    },
+    presentationVariant: [{ sortOrder: [{ by: 'Usertype', direction: #ASC }] }]
+}
+annotate view ZC_RAP_EINV_USER with
+{
+  @UI.facet          : [{id : 'General',
+            purpose: #STANDARD,
+            position: 10,
+            label : 'General',
+            type  : #IDENTIFICATION_REFERENCE
+            },
+                      {id : 'Items',
+            purpose: #STANDARD,
+            type  : #LINEITEM_REFERENCE,
+            label : 'Items',
+            position: 20,
+            targetElement: '_EInvoicesSerial'
+              }
+             ]
+
+  @UI.identification: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10 }]
+  @UI.selectionField: [{ position: 10 }]
+  Companycode;
+  @UI.identification: [{ position: 20 }]
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{ position: 20 }]
+  Usertype;
+  @UI.identification: [{ position: 30 }]
+  @UI.lineItem: [{ position: 30 }]
+  Username;
+  @UI.identification: [{ position: 40 }]
+  @UI.lineItem: [{ position: 40 }]
+  Password;
+  @UI.identification: [{ position: 50 }]
+  @UI.lineItem: [{ position: 50 }]
+  @EndUserText.label: 'Tax Identification Number'
+  Sellertax;
+  @UI.hidden: true
+  Locallastchangedby;
+  @UI.hidden: true
+  Locallastchangedat;
+  @UI.hidden: true
+  Lastchangedat;
+
+}

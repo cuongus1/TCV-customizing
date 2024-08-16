@@ -1,0 +1,134 @@
+unmanaged implementation in class zbp_cs_rap_einv_header unique;
+strict ( 2 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+//with draft;
+define behavior for zcs_rap_einv_header alias CSEInvoicesHeader
+//draft table zrap_einv_h_d
+lock master //total etag lastchangedat
+authorization master ( instance )
+//etag master lastchangedat
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) companycode, accountingdocument, FiscalYear, iconsap;
+  association _EInvoiceItems { create; }
+
+  action ( features : instance ) InteEINV parameter zrk_inte_einvoice result [1] $self;
+  action ( features : instance ) CancelEINV parameter zrk_cancel_einv result [1] $self;
+  action ( features : instance ) SearchEINV result [1] $self;
+  action ( features : instance ) AdjustEINV parameter zrk_adjust_einv result [1] $self;
+  action ( features : instance ) ReplaceEINV parameter zrk_adjust_einv result [1] $self;
+
+//  draft action Edit;
+//  draft action Activate;
+//  draft action Discard;
+//  draft action Resume;
+//
+//  draft determine action Prepare;
+
+  mapping for zrap_einv_header
+    {
+      Companycode        = companycode;
+      Accountingdocument = accountingdocument;
+      Fiscalyear         = fiscalyear;
+      Iconsap            = iconsap;
+      Postingdate        = postingdate;
+      Documentdate       = documentdate;
+      Entrydate          = entrydate;
+      Doctype            = doctype;
+      Exchangerate       = exchangerate;
+      Taxcode            = taxcode;
+      Customer           = customer;
+      Bname              = bname;
+      Baddr              = Baddr;
+      Bbank              = Bbank;
+      Bacct              = bacct;
+      Btax               = btax;
+      Bmail              = Bmail;
+      Btel               = btel;
+      Usertype           = usertype;
+      EType              = etype;
+      Form               = form;
+      Serial             = serial;
+      Seq                = seq;
+      Datintegration     = datintegration;
+      Datissuance        = datissuance;
+      Timeissuance       = timeissuance;
+      Datcancel          = datcancel;
+      IdkeyEinv          = idkeyeinv;
+      Zsearch            = zsearch;
+      Zreplace           = zreplace;
+      Startdat           = startdat;
+      Enddat             = enddat;
+      Suppliertaxcode    = suppliertaxcode;
+      Mscqt              = mscqt;
+      link               = link;
+      TypeDc             = typedc;
+      BelnrSrc           = belnrsrc;
+      GjahrSrc           = gjahrsrc;
+      StatusSap          = statussap;
+      StatusInv          = statusinv;
+      StatusCqt          = statuscqt;
+      MsgTy              = msgty;
+      MsgTx              = msgtx;
+      StatusSapold       = statussapold;
+      MsgOld             = msgold;
+      Paym               = paym;
+      Currency           = currency;
+      Amount             = amount;
+      Vat                = vat;
+      Total              = total;
+      Amountv            = amountv;
+      Vatv               = vatv;
+      Totalv             = totalv;
+      InvDat             = invdat;
+      CreatedBy          = createdby;
+      CreatedOn          = createdon;
+      CreatedTime        = createdtime;
+      Stblg              = stblg;
+      Stjah              = stjah;
+      Xreversing         = xreversing;
+      Xreversed          = xreversed;
+      LocalLastChangedBy = locallastchangedby;
+      LocalLastChangedAt = locallastchangedat;
+      LastChangedAt      = lastchangedat;
+    }
+}
+
+define behavior for zcs_rap_einv_items alias CSEInvoiceItems
+//draft table zrap_einv_i_d
+lock dependent by _EInvoices
+authorization dependent by _EInvoices
+//etag dependent by _EInvoices
+{
+  update;
+  delete;
+  field ( readonly ) companycode, accountingdocument, fiscalyear, buzei;
+  association _EInvoices ;
+
+  mapping for zrap_einv_items
+    {
+      Companycode            = companycode;
+      Accountingdocument     = accountingdocument;
+      Fiscalyear             = fiscalyear;
+      Buzei                  = buzei;
+      Material               = material;
+      Itemname               = itemname;
+      Noted                  = noted;
+      Taxcode                = taxcode;
+      Taxpercentage          = taxpercentage;
+      Quantity               = quantity;
+      Baseunit               = baseunit;
+      Unittext               = unittext;
+      Price                  = price;
+      Currency               = currency;
+      Amount                 = amount;
+      Vat                    = vat;
+      Total                  = total;
+      Pricev                 = pricev;
+      Amountv                = amountv;
+      Vatv                   = vatv;
+      Totalv                 = totalv;
+    }
+}

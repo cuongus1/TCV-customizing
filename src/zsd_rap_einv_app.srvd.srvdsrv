@@ -1,0 +1,9 @@
+@EndUserText.label: 'Serv Defi for ZC_RAP_EINV_HEADER'
+define service ZSD_RAP_EINV_APP {
+  expose zcs_rap_einv_header as CSEInvoicesHeader;
+  expose zcs_rap_einv_items  as CSEInvoiceItems;
+  expose ZC_RAP_EINV_USER    as EInvoiceUser;
+  expose ZC_RAP_EINV_SERIAL  as EInvoiceSerial;
+  expose ZC_RAP_EINV_PAYM    as ConfigPayment;
+  expose I_CompanyCode       as CompanyCode;
+}

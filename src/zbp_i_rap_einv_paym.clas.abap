@@ -1,0 +1,5 @@
+CLASS zbp_i_rap_einv_paym DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_rap_einv_paym.
+ENDCLASS.
+
+CLASS zbp_i_rap_einv_paym IMPLEMENTATION.
+ENDCLASS.

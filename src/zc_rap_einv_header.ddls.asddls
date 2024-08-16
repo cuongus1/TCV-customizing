@@ -1,0 +1,78 @@
+@EndUserText.label: 'BO projection view EInvoice Header'
+@AccessControl.authorizationCheck: #CHECK
+@Metadata.allowExtensions: true
+@Search.searchable: true
+define root view entity ZC_RAP_EINV_HEADER
+  provider contract transactional_query
+  as projection on zi_rap_einv_header
+{
+      @Search.defaultSearchElement: true
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'I_CompanyCode', element: 'CompanyCode' } }]
+      @ObjectModel.text.element: [ 'Companycode' ]
+  key Companycode,
+  key Accountingdocument,
+  key Fiscalyear,
+      Iconsap,
+      Postingdate,
+      Documentdate,
+      Entrydate,
+      Doctype,
+      Exchangerate,
+      Taxcode,
+      Customer,
+      Bname,
+      Baddr,
+      Bbank,
+      Bacct,
+      Btax,
+      Bmail,
+      Btel,
+      Usertype,
+      Etype,
+      Form,
+      Serial,
+      Seq,
+      Datintegration,
+      Datissuance,
+      Timeissuance,
+      Datcancel,
+      Idkeyeinv,
+      Zsearch,
+      Zreplace,
+      Startdat,
+      Enddat,
+      Suppliertaxcode,
+      Mscqt,
+      Link,
+      Typedc,
+      Belnrsrc,
+      Gjahrsrc,
+      Statussap,
+      Statusinv,
+      Statuscqt,
+      Msgty,
+      Msgtx,
+      Statussapold,
+      Msgold,
+      Paym,
+      Currency,
+      Amount,
+      Vat,
+      Total,
+      Amountv,
+      Vatv,
+      Totalv,
+      Invdat,
+      Createdby,
+      Createdon,
+      Createdtime,
+      Stblg,
+      Stjah,
+      Xreversing,
+      Xreversed,
+      Locallastchangedby,
+      Locallastchangedat,
+      Lastchangedat,
+      /* Associations */
+      _EInvoiceItems : redirected to composition child ZC_RAP_EINV_ITEMS
+}

@@ -1,0 +1,12 @@
+@EndUserText.label: 'Access control for ZI_RAP_EINV_USER'
+@MappingRole: true
+define role ZI_RAP_EINV_USER {
+    grant
+        select
+            on
+                ZI_RAP_EINV_USER
+                    where
+//                        entity_element_1 = 'literal_value'
+                        ( Companycode ) = aspect pfcg_auth ( F_BKPF_BUK, BUKRS, ACTVT = '03' );
+                        
+}

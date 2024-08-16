@@ -1,0 +1,44 @@
+@Metadata.layer: #CORE
+@UI:{
+    headerInfo: { typeName: 'EInvoice Form',
+                  typeNamePlural: 'EInvoice Form',
+                  title: { type: #STANDARD, label: 'Form', value: 'Etype' },
+                  description: { value: 'Etype'}
+    },
+    presentationVariant: [{ sortOrder: [{ by: 'Fiscalyear', direction: #ASC },{ by: 'Etype', direction: #ASC }] }]
+}
+annotate view ZC_RAP_EINV_SERIAL with
+{
+  @UI.facet          : [{id : 'Items',
+         purpose: #STANDARD,
+         position: 10,
+         label : 'Items',
+         type  : #IDENTIFICATION_REFERENCE
+         }
+         ]
+  @UI.hidden: true
+  Companycode;
+  @UI.hidden: true
+  Usertype;
+  @UI.identification: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10 }]
+  Fiscalyear;
+  @UI.identification: [{ position: 20 }]
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{ position: 20 }]
+  @EndUserText.label: 'EInvoice Type'
+  @UI.textArrangement: #TEXT_ONLY
+  Etype;
+  @UI.identification: [{ position: 30 }]
+  @UI.lineItem: [{ position: 30 }]
+  @UI.selectionField: [{ position: 30 }]
+  Datetype;
+  @UI.identification: [{ position: 40 }]
+  @UI.lineItem: [{ position: 40 }]
+  @UI.textArrangement: #TEXT_ONLY
+  Form;
+  @UI.identification: [{ position: 50 }]
+  @UI.lineItem: [{ position: 50 }]
+  Serial;
+
+}

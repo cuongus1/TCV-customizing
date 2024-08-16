@@ -1,0 +1,11 @@
+@EndUserText.label: 'Access control for ZC_RAP_EINV_USER'
+@MappingRole: true
+define role ZC_RAP_EINV_USER {
+    grant
+        select
+            on
+                ZC_RAP_EINV_USER
+                    where
+                        inheriting conditions from entity ZI_RAP_EINV_USER;
+                        
+}
